@@ -1,0 +1,122 @@
+
+
+
+{%extends 'Base.html'%}
+{% block content %}
+{% load static %}
+
+
+
+<html lang="en">
+
+   <!--Organizador de Header Esto permite posicionar cosas debajo del nav-->
+   <style>
+     header {
+         width: 100%;
+         height: 10%;
+         
+         padding: 250px;
+     }
+
+     nav {
+         color: white;
+     }
+
+     a {
+         text-decoration: none;
+
+         padding: 5px;
+         border-radius: 5%;
+         margin: 20px;
+     }
+
+     main {
+         font-size: 0px;
+     }
+   </style>
+ <head>
+ <!--iMPORTE ESTILOS CSS y Metadata-->
+
+ <script src="{%static 'js/bootstrap.min.js' %}"></script>
+ <script src="{%static 'js/sweetalert.min.js' %}"></script>
+ <script>
+  swal('{{msj}}','success')
+</script>
+
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+   <link rel="stylesheet" href="/static/fonts/icomoon/style.css">
+
+   <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+
+   
+   <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+   
+   
+   <link rel="stylesheet" href="/static/css/style.css">
+
+   
+ </head>
+ <body>
+
+   
+<header>
+<div class="text-end mb-3">
+   <a href="/crearmas" class="btn btn-primary">Agregar Mascota</a>
+</div>
+
+{%if mascota %}
+
+<table class="table table-bordered table-striped">
+ <thead>
+   <tr>
+     <th>ID</th>
+     <th>Nombre</th>
+     <th>Especie</th>
+
+
+   </tr>
+ </thead>
+ <tbody>
+   <!--Cargar todos los datos que traeremos desde la db-->
+   {% for p in mascota %}
+   <tr>
+     <td>{{ p.idmascota }}</td>
+     <td>{{ p.nombre }}</td>
+     
+     
+     <td>{{ p.especie }}</td>
+    
+
+
+   
+   <td>
+    <a href="/eliminarMas/{{ p.id }}" class="btn btn-danger">Eliminar</a>
+    <a href="/editarMas/{{ p.id }}" class="btn btn-warning">Editar</a>
+   </td>
+  </tr>
+</td>
+   {% endfor %}
+ </tbody>
+</table>
+</header>
+</body>
+{% else %}
+<div class="alert alert-warning">No existen registros De Especies
+
+<!--IMPORTE js y scripts de bootstrap y otra cosa que no me acuerdo como se llama-->
+<script src="/static/js/jquery-3.3.1.min.js"></script>
+<script src="/static/js/popper.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/jquery.sticky.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+</html>
+{% endif %} 
+{% endblock %}
+
